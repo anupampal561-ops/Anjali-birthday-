@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday Anjali ❤️</title>
+
+<style>
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family:Georgia,serif;
+  text-align:center;
+  color:white;
+  background:linear-gradient(135deg,#ff758c,#a18cd1,#fbc2eb);
+  min-height:100vh;
+  overflow-x:hidden;
+}
+.card{
+  margin:25px 15px;
+  padding:25px 15px;
+  border-radius:25px;
+  background:#ffffff25;
+  border:1px solid #ffffff70;
+  box-shadow:0 10px 35px #642b7340;
+}
+h1{font-size:35px;color:#fff2a8}
+h2{color:#fff0f5}
+p{font-size:18px;line-height:1.8}
+.photo{
+  width:220px;height:220px;
+  margin:20px auto;
+  border-radius:50%;
+  border:5px solid white;
+  box-shadow:0 0 25px #ffdaec;
+  object-fit:cover;
+  display:block;
+}
+button{
+  background:#ff3f81;color:white;
+  border:0;border-radius:30px;
+  padding:14px 22px;
+  font-size:17px;margin:10px;
+}
+.heart{
+  position:fixed;bottom:-30px;
+  animation:float 7s linear infinite;
+  pointer-events:none;
+}
+@keyframes float{
+  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+}
+#surprise{display:none}
+</style>
+</head>
+
+<body>
+<div class="card">
+  <div style="font-size:35px">🎂 🎀 💖 🎀 🎂</div>
+  <h1>Happy Birthday</h1>
+  <h1>Anjali ❤️</h1>
+  <p>Aaj ka din bahut special hai,<br>
+  kyunki aaj aapka birthday hai! 🌹</p>
+
+  <img class="photo" id="pic"
+       src="https://placehold.co/400x400/ffb6d9/ffffff?text=Anjali+%E2%9D%A4"
+       alt="Anjali ki photo">
+
+  <p>💗 Aapki smile hamesha bani rahe 💗</p>
+
+  <button onclick="document.getElementById('upload').click()">
+    📸 Apni Photo Lagao
+  </button>
+  <input id="upload" type="file" accept="image/*"
+         hidden onchange="showPhoto(event)">
+
+  <br>
+  <button onclick="document.getElementById('surprise').style.display='block'">
+    🎁 Open Your Surprise
+  </button>
+
+  <div id="surprise">
+    <h2>💌 Dear Anjali 💌</h2>
+    <p>Happy Birthday, Anjali! ❤️</p>
+    <p>Dua hai aapki zindagi khushiyon se bhar jaaye,
+    aapke saare sapne poore hon,
+    aur aap hamesha muskurati rahen. 🌹</p>
+    <p>🎂 Happy Birthday Once Again! 💖</p>
+  </div>
+  <p>Made with ❤️ just for Anjali</p>
+</div>
+
+<script>
+function showPhoto(event){
+  const file=event.target.files[0];
+  if(file){
+    document.getElementById('pic').src=URL.createObjectURL(file);
+  }
+}
+for(let i=0;i<18;i++){
+  let h=document.createElement('div');
+  h.className='heart';
+  h.textContent=['❤️','💖','💕','🌹','✨'][i%5];
+  h.style.left=Math.random()*100+'%';
+  h.style.animationDelay=Math.random()*7+'s';
+  h.style.fontSize=(18+Math.random()*20)+'px';
+  document.body.appendChild(h);
+}
+</script
+</body>
+</html>
