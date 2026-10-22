@@ -6,106 +6,226 @@
 <title>Happy Birthday Anjali ❤️</title>
 
 <style>
-*{box-sizing:border-box}
-body{
-  margin:0;
-  font-family:Georgia,serif;
-  text-align:center;
-  color:white;
-  background:linear-gradient(135deg,#ff758c,#a18cd1,#fbc2eb);
-  min-height:100vh;
-  overflow-x:hidden;
+* {
+  box-sizing: border-box;
 }
-.card{
-  margin:25px 15px;
-  padding:25px 15px;
-  border-radius:25px;
-  background:#ffffff25;
-  border:1px solid #ffffff70;
-  box-shadow:0 10px 35px #642b7340;
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: white;
+  text-align: center;
+  background: linear-gradient(135deg, #160024, #650b65, #fa4b91);
+  overflow-x: hidden;
 }
-h1{font-size:35px;color:#fff2a8}
-h2{color:#fff0f5}
-p{font-size:18px;line-height:1.8}
-.photo{
-  width:220px;height:220px;
-  margin:20px auto;
-  border-radius:50%;
-  border:5px solid white;
-  box-shadow:0 0 25px #ffdaec;
-  object-fit:cover;
-  display:block;
+
+.container {
+  padding: 35px 15px;
+  max-width: 600px;
+  margin: auto;
 }
-button{
-  background:#ff3f81;color:white;
-  border:0;border-radius:30px;
-  padding:14px 22px;
-  font-size:17px;margin:10px;
+
+h1 {
+  font-size: clamp(36px, 9vw, 55px);
+  color: #ffd6ed;
+  text-shadow: 0 0 20px #ff5ca8;
+  animation: glow 2s infinite alternate;
 }
-.heart{
-  position:fixed;bottom:-30px;
-  animation:float 7s linear infinite;
-  pointer-events:none;
+
+@keyframes glow {
+  from { text-shadow: 0 0 10px #ff4fa3; }
+  to { text-shadow: 0 0 30px #fff; }
 }
-@keyframes float{
-  to{transform:translateY(-110vh) rotate(360deg);opacity:0}
+
+.card {
+  background: #ffffff18;
+  border: 1px solid #ffffff50;
+  border-radius: 25px;
+  padding: 25px 18px;
+  margin-top: 25px;
+  box-shadow: 0 0 30px #ff80c855;
+  backdrop-filter: blur(10px);
 }
-#surprise{display:none}
+
+input {
+  width: 90%;
+  max-width: 300px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  margin: 10px;
+  font-size: 16px;
+}
+
+button {
+  padding: 13px 23px;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(45deg, #ff80bd, #ffe1a8);
+  color: #570d49;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 8px;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.cake {
+  font-size: 100px;
+  animation: bounce 1.5s infinite;
+  filter: drop-shadow(0 0 20px pink);
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50% { transform: translateY(-15px) rotate(3deg); }
+}
+
+#surprise {
+  display: none;
+}
+
+.message {
+  font-size: 18px;
+  line-height: 1.8;
+}
+
+.heart {
+  position: fixed;
+  bottom: -30px;
+  pointer-events: none;
+  animation: floatUp 6s linear forwards;
+  z-index: 5;
+}
+
+@keyframes floatUp {
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+#result {
+  color: #ffe0f1;
+}
 </style>
 </head>
 
 <body>
-<div class="card">
-  <div style="font-size:35px">🎂 🎀 💖 🎀 🎂</div>
-  <h1>Happy Birthday</h1>
-  <h1>Anjali ❤️</h1>
-  <p>Aaj ka din bahut special hai,<br>
-  kyunki aaj aapka birthday hai! 🌹</p>
+<div class="container">
 
-  <img class="photo" id="pic"
-       src="https://placehold.co/400x400/ffb6d9/ffffff?text=Anjali+%E2%9D%A4"
-       alt="Anjali ki photo">
+  <p>✨ A Special Surprise For You ✨</p>
 
-  <p>💗 Aapki smile hamesha bani rahe 💗</p>
+  <h1>Happy Birthday<br>Anjali 💖</h1>
 
-  <button onclick="document.getElementById('upload').click()">
-    📸 Apni Photo Lagao
-  </button>
-  <input id="upload" type="file" accept="image/*"
-         hidden onchange="showPhoto(event)">
+  <p>Today is your special day! 🎂🌸</p>
 
-  <br>
-  <button onclick="document.getElementById('surprise').style.display='block'">
-    🎁 Open Your Surprise
-  </button>
+  <div class="card" id="login">
+    <h2>🔐 Unlock Your Surprise 🎁</h2>
+    <p>Enter your secret password 💌</p>
 
-  <div id="surprise">
-    <h2>💌 Dear Anjali 💌</h2>
-    <p>Happy Birthday, Anjali! ❤️</p>
-    <p>Dua hai aapki zindagi khushiyon se bhar jaaye,
-    aapke saare sapne poore hon,
-    aur aap hamesha muskurati rahen. 🌹</p>
-    <p>🎂 Happy Birthday Once Again! 💖</p>
+    <input
+      type="password"
+      id="password"
+      placeholder="Enter password"
+    >
+
+    <br>
+
+    <button onclick="openSurprise()">
+      Open My Surprise 💗
+    </button>
+
+    <p id="result"></p>
   </div>
-  <p>Made with ❤️ just for Anjali</p>
+
+  <div class="card" id="surprise">
+
+    <div class="cake">🎂</div>
+
+    <h2>Dear Anjali ❤️</h2>
+
+    <div class="message">
+      <p>🎉 Happy Birthday, Anjali! 🎉</p>
+
+      <p>
+        May your life always be filled with happiness,
+        love and beautiful memories. 🌸
+      </p>
+
+      <p>
+        May all your dreams come true,
+        and may you always have a reason to smile. ✨
+      </p>
+
+      <p>
+        You deserve lots of happiness today and always. 💖
+      </p>
+
+      <h2>Keep Smiling, Anjali! 💕</h2>
+
+      <p>🎂🎁🌹✨💗✨🌹🎁🎂</p>
+    </div>
+
+    <button onclick="celebrate()">
+      More Magic ✨
+    </button>
+
+  </div>
+
+  <p style="margin-top:35px">
+    Made with 💖 just for Anjali
+  </p>
+
 </div>
 
 <script>
-function showPhoto(event){
-  const file=event.target.files[0];
-  if(file){
-    document.getElementById('pic').src=URL.createObjectURL(file);
+function openSurprise() {
+  const password =
+    document.getElementById("password").value;
+
+  if (password === "Anjali123") {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("surprise").style.display = "block";
+    celebrate();
+  } else {
+    document.getElementById("result").textContent =
+      "Wrong password! Try again 💗";
   }
 }
-for(let i=0;i<18;i++){
-  let h=document.createElement('div');
-  h.className='heart';
-  h.textContent=['❤️','💖','💕','🌹','✨'][i%5];
-  h.style.left=Math.random()*100+'%';
-  h.style.animationDelay=Math.random()*7+'s';
-  h.style.fontSize=(18+Math.random()*20)+'px';
-  document.body.appendChild(h);
+
+document.getElementById("password")
+  .addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+      openSurprise();
+    }
+  });
+
+function celebrate() {
+  const symbols = ["💖", "💕", "✨", "🌸", "💗", "🎉", "⭐"];
+
+  for (let i = 0; i < 45; i++) {
+    const heart = document.createElement("div");
+
+    heart.className = "heart";
+    heart.textContent =
+      symbols[Math.floor(Math.random() * symbols.length)];
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (18 + Math.random() * 20) + "px";
+    heart.style.animationDuration =
+      (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 7000);
+  }
 }
-</script
+</script>
+
 </body>
 </html>
